@@ -1,10 +1,16 @@
 
-const express = require('express')
-const app = express()
+import express from "express";
+import morgan from "morgan";
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
+import productRoute from "./src/routes/product.routes.js";
+import userRoute from "./src/routes/user.routes.js";
 
-app.listen(3000)
+const app = express();
+app.listen(3000);
+
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(productRoute);
+app.use(userRoute),
+
 console.log(`Server on port ${3000}`);
