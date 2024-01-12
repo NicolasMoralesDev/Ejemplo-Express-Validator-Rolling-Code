@@ -2,18 +2,7 @@
 
 export const createUser = async (req, res) => {
 
-try {
-      console.log("prueba");
 
-    res.status(201).json({
-        msg: req.body
-    })
-
-} catch (error) {
-    res.status(500).json({
-        error: error
-    })
-}
   
 };
 

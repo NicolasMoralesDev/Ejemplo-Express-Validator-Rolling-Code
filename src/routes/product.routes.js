@@ -1,15 +1,16 @@
 import  { Router } from "express"
 import { createProduct, deleteProduct, getProducts } from "../controllers/products.controller.js";
 import { check } from "express-validator";
-import { validarCampos } from "../midlewares/validarCampos.js";
+import { validateFields } from "../midlewars/validateFields.js";
+
 
 
 
 const router = Router();
 
-router.post("/product/create",[check("password", "error"), validarCampos], createProduct );
+router.post("/product/create",[check("id", "El id debe ser valido!").isMongoId().notEmpty(), validateFields], createProduct );
 
-router.get("/product/edit", getProducts);
+router.get("/product", getProducts);
 
 router.delete("/product/delete/:id", deleteProduct );
 
